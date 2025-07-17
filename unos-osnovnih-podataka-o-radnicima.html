@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unos osnovnih podataka o radnicima - Uputstvo</title> 
+    <link rel="stylesheet" href="style-final.css">
+    <script>
+        const allPages = [{"title":"Uvodna stranica","url":"uvodna-stranica.html"},{"title":"Šeme knjiženja","url":"seme-knjizenja.html"},{"title":"Obračun plate radnika","url":"obracun-plate-radnika.html"},{"title":"Unos osnovnih podataka o radnicima","url":"unos-osnovnih-podataka-o-radnicima.html"},{"title":"Vid isplate","url":"vid-isplate.html"},{"title":"Radnik - Ugovor","url":"radnik-ugovor.html"}]; // Ugrađujemo podatke o stranicama
+
+        function searchContent() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase(); // Pretraga je case-insensitive
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Očisti prethodne rezultate
+
+            if (searchTerm.length < 2) { // Izbegni pretragu za prekratke termine
+                return;
+            }
+
+            const results = allPages.filter(page =>
+                page.title.toLowerCase().includes(searchTerm)
+            );
+
+            if (results.length > 0) {
+                const resultsHtml = '<ul>' + results.map(page => `<li><a href="${page.url}">${page.title}</a></li>`).join('') + '</ul>';
+                resultsContainer.innerHTML = resultsHtml;
+            } else {
+                resultsContainer.innerHTML = '<p>Nema rezultata pretrage.</p>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="home-link" title="Povratak na Sadržaj">🏠</a>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Pretraži po naslovu..." onkeyup="searchContent()">
+                <button onclick="searchContent()">Pretraži</button>
+            </div>
+        </header>
+        <div id="search-results"></div>
+        <main class="proza"><h1>Forma za unos podataka o radnicima</h1>
+<p>Iz velikog horizontalnog menija na vrhu aplikacije odabraćemo dugme <code>Kadrovi</code>, pa iz padajućeg menija <code>Evidencija radnika</code>.</p>
+<p>Na desnoj strani ekrana, prikazala nam se forma <strong class="highlighted-text">Radnik</strong>. Ovdje se unose podaci o radniku. Hajde da zajedno prođemo kroz polja forme:</p>
+<p><img src="images/kadrovi_1.png" alt=""></p>
+<p>Prvo ćemo popuniti polja <code>Ime</code>, <code>Prezime</code>, <code>Ime roditelja</code>, <code>Šifra</code>, <code>Status</code>. <code>Ime roditelja</code> možemo sada preskočiti jer polje nema znak <strong class="highlighted-text">*</strong>, što znači da nije obavezno, pa ćemo to ime unijeti naknadno. Slično ćemo uraditi i sa ostalim poljima koja nisu obavezna.</p>
+<p>Obzirom da ne unosimo podatke iz druge aplikacije, gdje svaki radnik ima već odgovarajuću šifru koju želimo da zadržimo, a pošto nam je prvi radnik koga unosimo, upisaćemo u polje <code>Šifra</code> broj <strong class="highlighted-text">1</strong>. Takođe, iz padajućeg menija u polju <code>Status</code> ćemo izabrati da je radnik <code>aktivan</code>.</p>
+<p>Hajde sada da popunimo i ostala neophodna polja u ovoj formi kako bi snimili podatke o prvom radniku. Prvo ćemo kliknuti na tab <code>OSNOVA</code>. Tu ćemo popuniti <code>JMBG radnik</code>a i izabrati njegov <code>Pol</code>. Zatim ćemo kliknuti na tab <code>KONTAKT</code> i izabrati <code>Organizacionu jedinicu</code> (klikom na lupu ćemo pronaći sve postojeće organizacione jedinice). Za sada u tabu <code>DOKUMENTA</code> nećemo unositi podatke, pa ćemo otvoriti tab <code>OBRAČUN</code>. Ovdje ćemo popuniti podatke o dužini staža radnika van firme (polja <code>Godina</code>, <code>Mjeseci</code> i <code>Dana</code>). Pošto radnik nema poresku karticu, polje <code>Poreska kartica</code> možemo preskočiti jer nije obavezno. Ali ćemo zato odabrati poresku opštinu u polju <code>Poreska opština</code> i na kraju ćemo odabrati <code>Entitet ZO</code>. Ova dva polja su nam bitna zbog obračuna i prijave poreza i doprinosa u Poresku upravu.</p>
+<p>Kada smo popunili sve neophodne podatke, kliknućemo na dugme <strong class="custom-badge">Sačuvaj</strong>. Ako nam je iskočio mali prozorčić sa obavještenjem da je unos bio uspješan, to znači da smo uspješno unijeli prvog radnika.</p>
+<p>Hajde sada da provjerimo da li je radnik ispravno unešen! Iz velikog horizontalnog menija na vrhu aplikacije odabraćemo dugme <code>Kadrovi</code>, pa iz padajućeg menija <code>Evidencija radnika</code>. Pojavila nam je opet forma <strong class="highlighted-text">Radnik</strong>. Kliknimo na dugme <strong class="custom-badge">Traži</strong>. U novootvorenom prozoru, u formi sa lijeve strane, samo izaberimo iz padajućeg menija status <code>AKTIVAN</code> a neka ostala polja budu prazna. Kliknimo na dugme <strong class="custom-badge">Filter</strong>. Na desnoj strani ekrana bi trebao da se pojavi red sa podacima unešenog radnika.</p>
+<p>Na isti način unesimo i ostale radnike. Povedimo samo računa o tome da neki radnik nema poresku karticu izdatu od Poreske uprave. Ukoliko ima, u tabu <code>OBRAČUN</code> upišimo vrijednost sa kartice u polje Poreska kartica.</p>
+<p>Ovim smo unijeli osnovne podatke o radniku.</p>
+</main>
+    </div>
+</body>
+</html>

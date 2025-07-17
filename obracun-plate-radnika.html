@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obračun plate radnika - Uputstvo</title> 
+    <link rel="stylesheet" href="style-final.css">
+    <script>
+        const allPages = [{"title":"Uvodna stranica","url":"uvodna-stranica.html"},{"title":"Šeme knjiženja","url":"seme-knjizenja.html"},{"title":"Obračun plate radnika","url":"obracun-plate-radnika.html"},{"title":"Unos osnovnih podataka o radnicima","url":"unos-osnovnih-podataka-o-radnicima.html"},{"title":"Vid isplate","url":"vid-isplate.html"},{"title":"Radnik - Ugovor","url":"radnik-ugovor.html"}]; // Ugrađujemo podatke o stranicama
+
+        function searchContent() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase(); // Pretraga je case-insensitive
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Očisti prethodne rezultate
+
+            if (searchTerm.length < 2) { // Izbegni pretragu za prekratke termine
+                return;
+            }
+
+            const results = allPages.filter(page =>
+                page.title.toLowerCase().includes(searchTerm)
+            );
+
+            if (results.length > 0) {
+                const resultsHtml = '<ul>' + results.map(page => `<li><a href="${page.url}">${page.title}</a></li>`).join('') + '</ul>';
+                resultsContainer.innerHTML = resultsHtml;
+            } else {
+                resultsContainer.innerHTML = '<p>Nema rezultata pretrage.</p>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="home-link" title="Povratak na Sadržaj">🏠</a>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Pretraži po naslovu..." onkeyup="searchContent()">
+                <button onclick="searchContent()">Pretraži</button>
+            </div>
+        </header>
+        <div id="search-results"></div>
+        <main class="proza"><h1>Obračun plate radnika</h1>
+<p>Da bi uspješno pokrenuli obračun ličnog primanja potrebno je da minimalno popunimo jedan <code>Vid isplate</code> i da imamo bar jednog radnika kome smo popunili formu <code>Radnik ugovor</code>.</p>
+<p>U našem primjeru, mi smo kreirali dva vida isplate: <strong class="highlighted-text">Platu</strong> i <strong class="highlighted-text">Topli obrok</strong>. Hajde da obračunamo i platu i topli obrok.</p>
+<p>Iz velikog horizontalnog menija na vrhu aplikacije odabraćemo dugme <code>Kadrovi</code>, pa iz padajućeg menija <code>Obračun zarade</code>.</p>
+<p><img src="images/kadrovi_6.png" alt=""></p>
+<p>Otvorila nam se forma Obračun zarada za obračunavanje zarada. Mi želimo da obračunamo platu, pa ćemo u polju <code>Vid isplate</code> izabrati <strong class="highlighted-text">Plata</strong>. U polju <code>Mjesec</code> upisaćemo broj <strong class="highlighted-text">5</strong> jer želimo da obračunamo platu za mjesec maj. Polja <code>Godina</code>, <code>Status</code>, <code>Period od</code>, <code>Period do</code> i <code>Napomena</code> nećemo popunjavati i njih će program sam popuniti (obračun radimo za tekuću godinu).</p>
+<p>Ostalo nam je da popunimo podatke iz taba <code>Obračunski podaci</code>.</p>
+<h4>a) Obračun plate putem Ugovorene BRUTO plate</h4>
+<p>Ako obračun vršimo ugovaranjem bruto plate radnika (što definišemo popunjavanjem forme Radnik ugovor), popunićemo polja <code>Cena rada</code> proizvoljnim iznosom jer on nema uticaja na naš obračun ali nije dozvoljeno da bude <code>0,00</code>, zatim polje <code>Lični odbitak</code> (unijećemo onaj iznos bruto plate kojim se umanjuje poreska osnovica za sve radnike u obračunskom mjesecu - u maju 2025. ovaj iznos je <code>1.000,00</code> KM u Republici Srpskoj),  polje <code>Topli obrok</code> jer želimo da obračunamo radnicima (unosimo neto iznos toplog obroka za taj mjesec). Topli obrok smo ranije dodali u formi <code>Vid isplate</code>. Na kraju popunićemo i polje <code>Rok za isplatu</code> (unijećemo <code>30.06.2025.</code> godine). Polje <code>Broj radnih sati</code> nećemo dirati jer ga je program sam popunio. Nakon što smo popunili sva ova obavezna polja u tabu <code>Obračunski podaci</code> snimićemo sve te podatke klikom na dugme <strong class="custom-badge">Sačuvaj</strong> ispod forme.</p>
+<h4>b) Obračun plate putem koeficijenta i osnovica</h4>
+<p>U primjeru na slici platu obračunavamo putem koeficijenta i osnovice. Popunićemo polje <code>Cena rada</code> sa iznosom osnovice za obračun plate (u našem primjeru: 100,00), zatim polje <code>Lični odbitak</code> (unijećemo onaj iznos bruto plate kojim se umanjuje poreska osnovica za sve radnike u obračunskom mjesecu - u maju 2025. ovaj iznos je <code>1.000,00 KM</code> u Republici Srpskoj),  polje <code>Topli obrok</code> jer želimo da obračunamo radnicima (unosimo neto iznos toplog obroka za taj mjesec - u našem primjeru to je <code>200,00</code>). Topli obrok smo ranije dodali u formi <code>Vid isplate</code>. Na kraju popunićemo i polje Rok za isplatu (unijećemo <code>30.06.2025.</code> godine). Polje <code>Broj radnih sati</code> nećemo dirati jer ga je program sam popunio. Nakon što smo popunili sva ova obavezna polja u tabu <code>Obračunski podaci</code> snimićemo sve te podatke klikom na dugme <strong class="custom-badge">Sačuvaj</strong> ispod forme. </p>
+<h3>Forma za obračun zarade</h3>
+<p>Nakon što smo popunili podatke u tabu <code>Obračunski podaci</code> i snimili te podatke klikom na kliknemo na dugme <strong class="custom-badge">Sačuvaj</strong> ispod forme, kliknućemo na tab <code>Automatski obr.</code> Tu ćemo da kliknemo na dugme <strong class="custom-badge">Priprema obračuna</strong>. </p>
+<p><img src="images/kadrovi_7.png" alt=""></p>
+<p>Program će tražiti od nas da potvrdimo da želimo da uradimo pripremu obračuna. Kada potvrdimo, u sredini ekrana će se pojaviti svi radnici i njihovi obračunati iznosi plata. Klikom na pojedinačnog radnika, sa desne strane ekrana, vidimo obračun plate tog radnika.</p>
+<p>Ukoliko želimo da štampamo obračunske ili platne liste radnika, pronaći ćemo ih sa lijeve strane u formi <strong class="highlighted-text">Obračun zarada</strong> klikom na dugme Štampa. Kod štampanja platnih lista, potrebno je da označimo radnika za koga želimo da štampamo platnu listu klikom na tog radnika a zatim zadamo štampu platne liste.</p>
+<p>Ovim smo prošli cijeli obračun plate i toplog obroka u modulu Kadrovi.</p>
+</main>
+    </div>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <title>Šeme knjiženja - Uputstvo</title> 
     <link rel="stylesheet" href="style-final.css">
     <script>
-        const allPages = [{"title":"Uvodna stranica","url":"uvodna-stranica.html"},{"title":"Šeme knjiženja","url":"seme-knjizenja.html"},{"title":"Test","url":"test.html"},{"title":"Nova stranica","url":"nova-stranica.html"}]; // Ugrađujemo podatke o stranicama
+        const allPages = [{"title":"Uvodna stranica","url":"uvodna-stranica.html"},{"title":"Šeme knjiženja","url":"seme-knjizenja.html"},{"title":"Obračun plate radnika","url":"obracun-plate-radnika.html"},{"title":"Unos osnovnih podataka o radnicima","url":"unos-osnovnih-podataka-o-radnicima.html"},{"title":"Vid isplate","url":"vid-isplate.html"},{"title":"Radnik - Ugovor","url":"radnik-ugovor.html"}]; // Ugrađujemo podatke o stranicama
 
         function searchContent() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase(); // Pretraga je case-insensitive
@@ -40,7 +40,7 @@
             </div>
         </header>
         <div id="search-results"></div>
-        <main class="proza"><h2>Šeme knjiženja</h2>
+        <main class="proza"><h1>Šeme knjiženja</h1>
 <p>Šeme knjiženja koriste se za automatizaciju knjiženja. Ideja šema za knjiženje zasnovana je na činjenici da se najveći dio faktura i izvoda evidentira na sličan, a često i identičan, način po unaprijed određenoj šemi. <strong>Sinergis</strong>, zbog svog načina na koji je izgrađen, dodatno povećava mogućnosti kreiranja šema knjiženja. Šeme knjiženja značajno ubrzavaju rad računovođama, omogućavajući knjiženja velikog broja finansijskih transakcija u vrlo kratkom vremenu.
 No, hajde da pođemo od početka. 
 Osnovne preduslovi za kreiranje šema za knjiženje su poznavanje: </p>
@@ -121,8 +121,8 @@ Fakture troškova se kreiraju iz menija <strong class="highlighted-text">Nabavke
 <p>U ovom primjeru ćemo da vidimo kako bi izgledala šema knjiženja za nabavku goriva. Koristićemo fakturu goriva koju smo ranije unijeli.</p>
 </blockquote>
 <p><img src="images/seme_knjizenja_1.png" alt="Šeme knjiženje"></p>
-<p>Primjećujemo na lijevoj strani da je u pitanju dokument <code>20 - Trošak</code> i vidimo osnovne podatke o računu. Na desnoj strani vidimo da je za ovu fakturu izabrana vrsta troška <code>3 - Troškovi goriva</code>. Prethodno je unešena ova vrsta troška putem menija <strong class="highlighted-text">Finansije</strong> i podmenija <strong class="highlighted-text">Vrsta troška</strong> i prilikom unosa ovog troška definisan je i konto na koji se knjiži ovaj trošak. U konkretnom primjeru konto je <code>51301 – Troškovi goriva</code>. 
-<img src="images/seme_knjizenja_2.png" alt="Šeme knjiženje"></p>
+<p>Primjećujemo na lijevoj strani da je u pitanju dokument <code>20 - Trošak</code> i vidimo osnovne podatke o računu. Na desnoj strani vidimo da je za ovu fakturu izabrana vrsta troška <code>3 - Troškovi goriva</code>. Prethodno je unešena ova vrsta troška putem menija <strong class="highlighted-text">Finansije</strong> i podmenija <strong class="highlighted-text">Vrsta troška</strong> i prilikom unosa ovog troška definisan je i konto na koji se knjiži ovaj trošak. U konkretnom primjeru konto je <code>51301 – Troškovi goriva</code>.</p>
+<p><img src="images/seme_knjizenja_2.png" alt="Šeme knjiženje"></p>
 <p>Ovaj konto je analitički konto koji je prije ovog unešen u kontni okvir ( <a href="kontni-okvir.html">Rad sa kontnim okvirom</a> ).</p>
 <p>Pošto imamo unešenu fakturu za gorivo, hajde da napravimo šemu knjiženja koja bi obuhvatila sve stavke knjiženja za fakture za gorivo. Ali ne samo to. Cilj nam je da napravimo šemu knjiženja za sve fakture koje knjižimo koristeći <code>Dokument 20 – Trošak</code>, odnosno fakture koje nazivamo “Faktura troškova”.
 Šeme za knjiženje kreiramo klikom na link <strong class="highlighted-text">Finansije</strong> i u padajućem meniju na  <strong class="highlighted-text">Šema knjiženja</strong>.</p>
@@ -183,7 +183,7 @@ Fakture troškova se kreiraju iz menija <strong class="highlighted-text">Nabavke
 </blockquote>
 <p>Sada, kada za primjer uzmemo fakturu dobavljača iz Republike Srpske, vidjećemo da su i ta knjiženja ispravna. Pa ako uzmemo za primjer i fakture troškova dobavljače iz Brčko Distrikta i inostranstva, sve bi trebalo da je ispravno. Na ovaj način smo uspješno napravili šemu knjiženja za Fakturu troškova. </p>
 <p><img src="images/seme_knjizenja_5.png" alt="Šeme knjiženje"></p>
-<p><strong class="highlighted-text">Problem: Ovo gore mi NE RADI u slučajevima kad Faktura troškova sadrži više različitih troškova u analitici a koji zahtijevaju različita konta. Npr. faktura M:tel-a. Na fakturi ima i zatezna kamata (knjiži se na poseban konto zbog poreskog bilansa jer je neprihvatljiv trošak) i troškovi telefona. Gore navedena šema knjiženja, šta god da uradim, uvijek koristi konto prvog unešenog troška a sabira vrijednosti svih troškova u taj trošak. Pa knjiženje ovog primjera izgleda ovako: Dakle, sabrao mi je u zatezne kamate i troškove PTT-a a obje analitike troškova imaju zasebne vrste troška.</strong> </p>
+<p><strong class="critical-text">Problem: Ovo gore mi NE RADI u slučajevima kad Faktura troškova sadrži više različitih troškova u analitici a koji zahtijevaju različita konta. Npr. faktura M:tel-a. Na fakturi ima i zatezna kamata (knjiži se na poseban konto zbog poreskog bilansa jer je neprihvatljiv trošak) i troškovi telefona. Gore navedena šema knjiženja, šta god da uradim, uvijek koristi konto prvog unešenog troška a sabira vrijednosti svih troškova u taj trošak. Pa knjiženje ovog primjera izgleda ovako: Dakle, sabrao mi je u zatezne kamate i troškove PTT-a a obje analitike troškova imaju zasebne vrste troška.</strong> </p>
 <p><img src="images/seme_knjizenja_6.png" alt="Šeme knjiženje"></p>
 <h2>Šema za knjiženje fakture nabavke robe (Prijem/Kalkulacija) (ulaz)</h2>
 <p>Ukoliko pravno lice koje kome vodimo knjigovodstvo ima robno poslovanje, fakture kojima nam fakturiše robu, ne možemo evidentirati po šablonu za unos Fakture Troškova. Zato je u <strong class="highlighted-text">Sinergisu</strong>, za ovakve fakture kreiran poseban dokument: <code>6 – Kalkulacija</code>. </p>
@@ -248,7 +248,7 @@ Ako smo ispravno popunili, i snimili, faktura prodaje robe <code>Faktura – Otp
 <p><img src="images/seme_knjizenja_10.png" alt="Šeme knjiženje"></p>
 <p>Hajde sada i da za ovaj dokument (<code>4 – Faktura-Otpremnica</code>), kreiramo šemu knjiženja. </p>
 <p>Novu šemu za knjiženje ćemo opet kreirati klikom na link <code>Finansije</code> i u padajućem meniju na  <code>Šema knjiženja</code>.</p>
-<p><strong class="highlighted-text">Problem: Šemu za ovo takođe ne mogu da napravim da radi. Htio sam da napravim jednostavnu šemu prodaje robe pa da posle napravim šemu prodaje usluga, te da na kraju napravim šemu knjiženja po grupama robe. Probao sam na više načina i to mi ne ide! Ako pokušam u istu šemu da stavim prodaju robe i usluga, dupliraju mi se iznosi. Nisam mogao da provalim kako. Razmišljao sam i da napravim podorganizacionu jedinicu koja se bavi uslužnim djelatnosti pa da za tu jedinicu napravim šeme knjiženja koje se odnose samo na usluge.</strong></p>
+<p><strong class="critical-text">Problem: Šemu za ovo takođe ne mogu da napravim da radi. Htio sam da napravim jednostavnu šemu prodaje robe pa da posle napravim šemu prodaje usluga, te da na kraju napravim šemu knjiženja po grupama robe. Probao sam na više načina i to mi ne ide! Ako pokušam u istu šemu da stavim prodaju robe i usluga, dupliraju mi se iznosi. Nisam mogao da provalim kako. Razmišljao sam i da napravim podorganizacionu jedinicu koja se bavi uslužnim djelatnosti pa da za tu jedinicu napravim šeme knjiženja koje se odnose samo na usluge.</strong></p>
 <p> </p>
 <h2>Šema za knjiženje izvoda (Izvod banke - Uplata i Izvod banke - Isplata)</h2>
 <p>Prikazali smo kreiranje šema za knjiženje za ulazne i izlazne fakture. Na sličan način se kreiraju i ostali dokumenti vezani za ovakve fakture (avansne fakture (ulazne i izlazne), knjižna odobrenja i knjižna zaduženja (ulaz i izlaz). 
@@ -266,7 +266,7 @@ Unešeni izvod u aplikaciji <strong class="highlighted-text">Sinergis</strong> i
 <p><img src="images/seme_knjizenja_13.png" alt="Šeme knjiženje"></p>
 <p>Pošto izvodi rade sa dva dokumenta: <code>305 - Izvod banke – Uplata</code> i <code>306 - Izvod banke – Isplata</code>, potrebno je da za oba dokumenta napravimo šemu knjiženja. Dakle, u ovom slučaju pravimo zasebne šeme knjiženja za uplate i za isplate. Slika iznad prikazuje primjer šeme knjiženja za uplate. Slika ispod prikazuje primjer šeme knjiženja za isplate.</p>
 <p><img src="images/seme_knjizenja_14.png" alt="Šeme knjiženje"></p>
-<p><strong class="highlighted-text">Problem: ove šeme knjiženja generalno rade u mom slučaju ali nisu dobre za uputstvo (ili mi treba pojašanje). Prvobitno sam kreirao samo šeme gdje su vrijednosti bile „iznos“. I te šeme rade za ručni unos izvoda. Međutim, te šeme ne rade za automatsko uvoženje izvoda. Za izvode koje sam uvezao, bilo mi je potrebno da dodam i „iznosSaPdv“-om. Posle toga i ovi izvodi rade. Probao sam sa dvije banke i ista mi je situacija. Posle sam opet isprobao da unesem ručno neki izvod (da vidim da li je došlo do dupliranja jer sad imam i iznos i iznosSaPdv-om uz iste uslove), i sve je u redu. Nema dupliranja. Dakle sve radi ali mi treba potvrda ovoga za uputstvo.</strong> </p>
+<p><strong class="critical-text">Problem: ove šeme knjiženja generalno rade u mom slučaju ali nisu dobre za uputstvo (ili mi treba pojašanje). Prvobitno sam kreirao samo šeme gdje su vrijednosti bile „iznos“. I te šeme rade za ručni unos izvoda. Međutim, te šeme ne rade za automatsko uvoženje izvoda. Za izvode koje sam uvezao, bilo mi je potrebno da dodam i „iznosSaPdv“-om. Posle toga i ovi izvodi rade. Probao sam sa dvije banke i ista mi je situacija. Posle sam opet isprobao da unesem ručno neki izvod (da vidim da li je došlo do dupliranja jer sad imam i iznos i iznosSaPdv-om uz iste uslove), i sve je u redu. Nema dupliranja. Dakle sve radi ali mi treba potvrda ovoga za uputstvo.</strong> </p>
 </main>
     </div>
 </body>

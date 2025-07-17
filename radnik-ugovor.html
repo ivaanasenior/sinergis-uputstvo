@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radnik - Ugovor - Uputstvo</title> 
+    <link rel="stylesheet" href="style-final.css">
+    <script>
+        const allPages = [{"title":"Uvodna stranica","url":"uvodna-stranica.html"},{"title":"Šeme knjiženja","url":"seme-knjizenja.html"},{"title":"Obračun plate radnika","url":"obracun-plate-radnika.html"},{"title":"Unos osnovnih podataka o radnicima","url":"unos-osnovnih-podataka-o-radnicima.html"},{"title":"Vid isplate","url":"vid-isplate.html"},{"title":"Radnik - Ugovor","url":"radnik-ugovor.html"}]; // Ugrađujemo podatke o stranicama
+
+        function searchContent() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase(); // Pretraga je case-insensitive
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Očisti prethodne rezultate
+
+            if (searchTerm.length < 2) { // Izbegni pretragu za prekratke termine
+                return;
+            }
+
+            const results = allPages.filter(page =>
+                page.title.toLowerCase().includes(searchTerm)
+            );
+
+            if (results.length > 0) {
+                const resultsHtml = '<ul>' + results.map(page => `<li><a href="${page.url}">${page.title}</a></li>`).join('') + '</ul>';
+                resultsContainer.innerHTML = resultsHtml;
+            } else {
+                resultsContainer.innerHTML = '<p>Nema rezultata pretrage.</p>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="home-link" title="Povratak na Sadržaj">🏠</a>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Pretraži po naslovu..." onkeyup="searchContent()">
+                <button onclick="searchContent()">Pretraži</button>
+            </div>
+        </header>
+        <div id="search-results"></div>
+        <main class="proza"><h1>Povezivanje radnika sa vidom isplate - radnik UGOVOR</h1>
+<p>Da bi pripremili sve podatke za unos jednog ugovora radnika, prethodno moramo popuniti podatke za radnika na meniju <code>Evidencija radnika</code> i unijeti vid isplate po kome će radnik da prima lično primanje na meniju <code>Vid isplate</code>. Hajde sada da povežemo ove informacije međusobno i da unesemo podatke koliko ćemo radnicima isplaćivati (pridržavajući se ugovora koji smo potpisali sa radnicima).</p>
+<p>Kada je riječ o Plati, kao glavnom vidu isplate, ugovor sa radnikom se potpisuje ili u ukupnom bruto iznosu (Osnovna bruto plata) ili određujemo radniku koeficijent za složenost posla (koji se kasnije množi sa osnovicom i tako se opet dobija Osnovna bruto plata). <strong class="highlighted-text">Sinergis</strong> nudi oba načina obračuna. U primjeru ćemo paralelno pokazati oba načina popunjavanja forme <strong class="highlighted-text">Radnik ugovor</strong>. Takođe, pokazaćemo kako da radnika povežemo i na druge vidove isplate (topli obrok).</p>
+<p>Iz velikog horizontalnog menija na vrhu aplikacije odabraćemo dugme <code>Kadrovi</code>, pa iz padajućeg menija <code>Radnik UGOVOR</code>.</p>
+<h3>Forma za unos ugovora radnika</h3>
+<p>Otvorila nam se forma <strong class="highlighted-text">Radnik ugovor</strong> za unos podataka o ugovorima radnika. Prvo ćemo u polju <code>Radnik</code> odabrati radnika a potom i <code>Plata</code> u polju <code>Vid isplate</code>. Ovim programu govorimo da će ovaj radnik primati platu. Zatim ćemo popuniti ostala neophodna polja.</p>
+<p>Donji dio forme čine dva taba: <code>OBRAČUNSKI ELEMENTI</code> i <code>RADNO MJESTO</code>. U tabu <code>OBRAČUNSKI ELEMENTI</code> popunićemo polje <code>Broj ugovora</code>. Polje <code>Status</code> treba da ima vrijednost <code>Aktivan</code>. Kvačicu pored polja <code>Topli obrok</code> ćemo ostaviti (što znači da će radniku uz platu biti obračunat i topli obrok ako je dodat u vidovima isplate i povezan sa platom kao osnovnim vidom isplate). Kvačicu pored polja <code>Regres</code> ćemo ukloniti. Ostavićemo kvačicu pored polja <code>Dostava</code> i <code>Minuli rad</code> (jer želimo da nam program obračuna naknadu za minuli rad radnika).</p>
+<h4>a) Obračun plate putem koeficijenta</h4>
+<p><img src="images/kadrovi_4.png" alt=""></p>
+<p>U polje <code>Koeficijent bruto</code> ćemo upisati koeficijent 32,00. U polje <code>Ugovoreni BRUTO</code> iznos nećemo popunjavati ništa. Ovim programu govorimo da smo radniku odredili koeficijent složenosti posla <code>32,00</code> i da će mu se plata obračunavati pomoću koeficijenta složenosti posla i osnovice.</p>
+<h4>b) Obračun plate ugovaranjem bruto iznosa</h4>
+<p><img src="images/kadrovi_5.png" alt=""></p>
+<p>U polje <code>Ugovoreni BRUTO</code> iznos upisaćemo vrijednost <code>3200</code>. U polje <code>Koeficijent bruto</code> nećemo upisivati ništa. Ovim programu govorimo da smo sa radnikom ugovorili bruto iznos plate koja će mu biti isplaćivana (unosi se osnovna bruto plata).</p>
+<p>U tabu <code>Radno mjesto</code> popunićemo polje <code>Tekući račun</code> i izabrati organizacionu jedinicu u polju <code>Organizaciona jedinica</code>.</p>
+<p>Kada smo popunili sve neophodne podatke, kliknućemo na dugme <strong class="custom-badge">Sačuvaj</strong>. Ako nam je iskočio mali prozorčić sa obavještenjem da je unos bio uspješan, to znači da smo uspješno unijeli ugovor za radnika.</p>
+<p>Ako smo uspješno unijeli ugovor za radnika, to znači da smo unijeli sve neophodne podatke za obračune.</p>
+</main>
+    </div>
+</body>
+</html>

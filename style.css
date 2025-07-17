@@ -250,6 +250,16 @@ body {
     box-shadow: 0 0 0 1px #ffe69c; /* Tanki okvir oko istaknutog teksta */
 }
 
+/* Stil za ŁtextŁ sintaksu */
+.proza .critical-text {
+    color: #d93025; /* Crvena boja */
+    font-weight: bold;
+    background-color: #fce8e6; /* Blaga crvena pozadina */
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+}
+
+
 
 /* Stilovi za donju traku sa legendom */
 #cheatsheet {

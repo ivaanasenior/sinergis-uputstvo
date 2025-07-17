@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vid isplate - Uputstvo</title> 
+    <link rel="stylesheet" href="style-final.css">
+    <script>
+        const allPages = [{"title":"Uvodna stranica","url":"uvodna-stranica.html"},{"title":"Šeme knjiženja","url":"seme-knjizenja.html"},{"title":"Obračun plate radnika","url":"obracun-plate-radnika.html"},{"title":"Unos osnovnih podataka o radnicima","url":"unos-osnovnih-podataka-o-radnicima.html"},{"title":"Vid isplate","url":"vid-isplate.html"},{"title":"Radnik - Ugovor","url":"radnik-ugovor.html"}]; // Ugrađujemo podatke o stranicama
+
+        function searchContent() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase(); // Pretraga je case-insensitive
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Očisti prethodne rezultate
+
+            if (searchTerm.length < 2) { // Izbegni pretragu za prekratke termine
+                return;
+            }
+
+            const results = allPages.filter(page =>
+                page.title.toLowerCase().includes(searchTerm)
+            );
+
+            if (results.length > 0) {
+                const resultsHtml = '<ul>' + results.map(page => `<li><a href="${page.url}">${page.title}</a></li>`).join('') + '</ul>';
+                resultsContainer.innerHTML = resultsHtml;
+            } else {
+                resultsContainer.innerHTML = '<p>Nema rezultata pretrage.</p>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="home-link" title="Povratak na Sadržaj">🏠</a>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Pretraži po naslovu..." onkeyup="searchContent()">
+                <button onclick="searchContent()">Pretraži</button>
+            </div>
+        </header>
+        <div id="search-results"></div>
+        <main class="proza"><h1>Unos osnovnih podataka o primanjima radnika - Vid isplate</h1>
+<p>Popunjavanjem ove forme popunićemo osnovne parametre za obračun primanja koje se odnositi na sve radnike. Najčešći oblici ličnih primanja su plata i topli obrok mada je putem <strong class="highlighted-text">Sinergisa</strong> moguće kreirati veći broj različitih obračuna koji zahtjevaju obračune poreza i doprinosa.</p>
+<h3>Plata - kao vid isplate radnicima</h3>
+<p>Iz velikog horizontalnog menija na vrhu aplikacije odabraćemo dugme <code>Kadrovi</code>, pa iz padajućeg menija <code>Vid isplate</code>.</p>
+<p>Forma za unos parametara obračuna plate</p>
+<p><img src="images/kadrovi_2.png" alt=""></p>
+<p>Otvorila nam se forma <strong class="highlighted-text">Parametri obračuna plate</strong> za unos podataka o vidu isplate. Pošto nam je ovo prvi vid isplate koji definišemo u programu, u polje Šifra upisaćemo broj <strong class="highlighted-text">1</strong>. U <code>Opis</code> upisaćemo <strong class="highlighted-text">Plata</strong> jer definišemo Platu kao vid isplate. Zatim ćemo popuniti polja <code>Tip obračuna</code>, <code>Status</code>, odabati opciju <code>REDOVAN RAD</code> u polju <code>Vrsta vida isplate</code> (što je praksa za obračun plate), te izabrati sjedište u polju <code>Sjedište za VI*</code> i entitet u polju <code>Entitet</code>. </p>
+<p>Nakon toga, popunićemo sva preostala polja sa aktuelnim stopama poreza i doprinosa ne unoseći znak procenat <strong class="highlighted-text">%</strong>. Kada smo popunili sve neophodne podatke, kliknućemo na dugme <strong class="custom-badge">Sačuvaj</strong>. Ako nam je iskočio mali prozorčić sa obavještenjem da je unos bio uspješan, to znači da smo uspješno unijeli vid isplate &quot;Plata&quot;.</p>
+<blockquote>
+<p>Na slici je prikazan primjer popunjene forme <strong class="highlighted-text">Parametri obračuna plate</strong> za Republiku Srpsku sa aktuelnim stopama na dan 31.05.2025. godine. </p>
+</blockquote>
+<h3>Topli obrok - kao vid isplate radnicima</h3>
+<p>Iz velikog horizontalnog menija na vrhu aplikacije odabraćemo dugme <code>Kadrovi</code>, pa iz padajućeg menija <code>Vid isplate</code>.</p>
+<p><img src="images/kadrovi_3.png" alt=""></p>
+<p>Otvorila nam se forma <strong class="highlighted-text">Parametri obračuna plate</strong> za unos podataka o vidu isplate. Pošto nam je ovo drugi vid isplate koji definišemo u programu, u polje <code>Šifra</code> upisaćemo broj <strong class="highlighted-text">2</strong>. U <code>Opis</code> upisaćemo <code>Topli obrok</code> jer definišemo Topli obrok kao vid isplate. Zatim ćemo popuniti polja <code>Tip obračuna</code>, <code>Status</code>, odabati opciju <code>OSTALI VI</code> u polju <code>Vrsta vida isplate</code>, te izabrati <code>Osnovni VI</code> u polju <code>Osnovni VI</code> što je u ovom slučaju Plata, i na kraju ćemo izabrati entitet u polju <code>Entitet</code>. </p>
+<p>Nakon toga, popunićemo sva preostala polja sa aktuelnim stopama poreza i doprinosa ne unoseći znak procenta <strong class="highlighted-text">%</strong>. Kada smo popunili sve neophodne podatke, kliknućemo na dugme <strong class="custom-badge">Sačuvaj</strong>. Ako nam je iskočio mali prozorčić sa obavještenjem da je unos bio uspješan, to znači da smo uspješno unijeli vid isplate <code>Topli obrok</code>. </p>
+</main>
+    </div>
+</body>
+</html>
