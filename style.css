@@ -1,0 +1,313 @@
+/* Osnovni stilovi i layout */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+}
+
+.editor-container {
+    display: flex;
+    flex-grow: 1; /* Zauzima preostali prostor */
+}
+
+.app-container {
+    display: flex;
+    flex-grow: 1; /* Zauzima sav dostupan prostor */
+    min-height: 0; /* Sprečava probleme sa prelivanjem sadržaja u flex kontejneru */
+}
+
+#sidebar {
+    /* Podešavanja za meni koji se skriva */
+    width: 250px; /* Fiksna širina menija */
+    flex-shrink: 0; /* Sprečava da se meni smanji kada nema prostora */
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-sizing: border-box;
+    /* Tranzicija za glatku animaciju */
+    transition: margin-left 0.3s ease-in-out;
+    /* Podrazumevano stanje: meni je sakriven, viri samo 20px kao "ručica" */
+    margin-left: -230px; /* Širina (250px) - Vidljivi deo (20px) = 230px */
+}
+
+/* Kada se pređe mišem preko menija (preko onih 20px što vire), on se prikazuje */
+#sidebar:hover {
+    margin-left: 0;
+}
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #34495e;
+    padding-bottom: 0.5rem;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+#add-page-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1.5rem;
+    line-height: 28px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#add-page-btn:hover {
+    background: #2980b9;
+}
+
+/* Zajednički stilovi za oba panela */
+#markdown-input, #html-output {
+    height: 100%;
+    box-sizing: border-box; /* Važno da padding ne remeti širinu */
+    padding: 2rem;
+    font-size: 16px;
+    line-height: 1.6;
+    flex-basis: 50%; /* Osigurava da oba panela dele prostor jednako */
+    overflow-y: auto; /* Omogućava skrolovanje */
+}
+
+#page-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    flex-grow: 1; /* Gura footer na dno */
+    overflow-y: auto;
+}
+
+#page-list li {
+    padding: 0.75rem 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s;
+}
+
+#page-list li:hover {
+    background-color: #34495e;
+}
+
+#page-list li.active {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Gura se na dno */
+}
+
+#markdown-input {
+    width: 40%; /* Leva strana za unos teksta */    
+    border: none;
+    border-right: 1px solid #ccc;
+    background-color: #ffffff;
+    resize: none; /* Uklanja mogućnost promene veličine */
+    outline: none; /* Uklanja plavi okvir pri fokusu */
+    font-family: "Fira Code", "Courier New", monospace;
+    max-width: 500px; /* Ograničava maksimalnu širinu levog panela */
+}
+
+/* Desni panel - prikaz HTML-a */
+#html-output {
+    width: 60%; /* Desna strana za prikaz */
+    background-color: #f9f9f9;
+}
+
+#export-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+/* ------------------------------------------- */
+/* Stilovi za generisani HTML - "Prelijepi" deo */
+/* ------------------------------------------- */
+.proza h1, .proza h2, .proza h3, .proza h4 {
+    color: #1d2d35;
+    line-height: 1.2;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.proza h1 {
+    font-size: 2rem;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: .3em;
+}
+
+.proza h2 {
+    font-size: 1.7rem;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: .3em;
+}
+
+.proza h3 {
+    font-size: 1.4rem;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: .3em;
+}
+
+.proza h4 {
+    font-size: 1.2rem;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: .3em;
+}
+
+.proza p {
+    margin-bottom: 1em;
+}
+
+.proza a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+.proza a:hover {
+    text-decoration: underline;
+}
+
+.proza ul, .proza ol {
+    padding-left: 2em;
+}
+
+.proza table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+.proza th, .proza td {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+}
+
+.proza code {
+    background-color: #eef;
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    border-radius: 3px;
+    font-family: "Fira Code", "Courier New", monospace;
+}
+
+.proza blockquote {
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+    padding: 0 1em;
+    margin-left: 0;
+}
+
+/* Stil za našu novu &tekst& sintaksu */
+.proza .custom-badge {
+    color: #ffffff;
+    background-color: #3498db; /* Plava boja, kao dugmići u meniju */
+    padding: 0.2em 0.6em;
+    border-radius: 5px;
+    font-size: 90%;
+    font-weight: bold; /* Dodato boldiranje */
+}
+
+/* Stil za &&tekst&& sintaksu */
+.proza kbd.keyboard-key {
+    background-color: #e9ecef; /* Svetlo siva pozadina */
+    color: #212529; /* Tamno sivi tekst */
+    font-weight: bold;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+    padding: 0.2em 0.75em; /* Povećan padding sa strane */
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    font-size: 85%;
+    font-family: "Fira Code", "Courier New", monospace;
+}
+
+/* Stil za $tekst$ sintaksu */
+.proza mark.highlighted-text {
+    background-color: #fff3cd; /* Svetlo žuta pozadina (boja markera) */
+    color: #63471e; /* Tamnija boja teksta za bolji kontrast */
+    padding: 0.2em 1rem; /* Padding levo i desno od 1rem */
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 0 0 0 1px #ffe69c; /* Tanki okvir oko istaknutog teksta */
+}
+
+
+/* Stilovi za donju traku sa legendom */
+#cheatsheet {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Poravnanje na vrhu */
+    gap: 0.5rem; /* Smanjeni razmak između stavki */
+    font-size: 12px; /* Smanjeni font */
+    flex-shrink: 0; /* Sprečava da se traka smanji */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Mala senka na vrhu */
+    overflow-x: auto; /* Horizontalno skrolovanje ako pređe širinu */
+    white-space: nowrap; /* Sprečava prelazak u više redova */
+}
+
+.cheatsheet-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+/* Manji padding za ključeve */
+.cheatsheet-item .key {
+    background-color: #4f6a85;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: "Fira Code", "Courier New", monospace;
+    cursor: pointer; /* Indikacija da je element klikabilan */
+}
+
+
+/* Stilovi za eksportovani sajt (primeniće se na sve elemente) */
+body.exported {
+    background-color: #fff;
+}
+
+.exported .app-container {
+    display: block; /* Uklanja flexbox layout */
+    max-width: none; /* Uklanja ograničenje širine */
+    margin: 0;
+}
+
+.exported #sidebar {
+    position: static; /* Uklanja sticky pozicioniranje */
+    width: 100%; /* Sidebar zauzima punu širinu */
+    height: auto; /* Automatska visina */
+    margin-left: 0; /* Uklanja skrivanje menija */
+    padding: 1rem 2rem;
+}
+
+.exported .sidebar-header,
+.exported #add-page-btn,
+.exported .sidebar-footer {
+    display: none; /* Sakriva nepotrebne elemente sidebar-a */
+}
+
+.exported #html-output, .exported .proza {
+    width: 100%; /* Sadržaj zauzima punu širinu */
+    padding: 2rem;
+}

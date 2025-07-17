@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Uputstvo</title> 
+    <link rel="stylesheet" href="style-final.css">
+    <script>
+        const allPages = [{"title":"Uvodna stranica","url":"uvodna-stranica.html"},{"title":"Šeme knjiženja","url":"seme-knjizenja.html"},{"title":"Test","url":"test.html"},{"title":"Nova stranica","url":"nova-stranica.html"}]; // Ugrađujemo podatke o stranicama
+
+        function searchContent() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase(); // Pretraga je case-insensitive
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Očisti prethodne rezultate
+
+            if (searchTerm.length < 2) { // Izbegni pretragu za prekratke termine
+                return;
+            }
+
+            const results = allPages.filter(page =>
+                page.title.toLowerCase().includes(searchTerm)
+            );
+
+            if (results.length > 0) {
+                const resultsHtml = '<ul>' + results.map(page => `<li><a href="${page.url}">${page.title}</a></li>`).join('') + '</ul>';
+                resultsContainer.innerHTML = resultsHtml;
+            } else {
+                resultsContainer.innerHTML = '<p>Nema rezultata pretrage.</p>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="home-link" title="Povratak na Sadržaj">🏠</a>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Pretraži po naslovu..." onkeyup="searchContent()">
+                <button onclick="searchContent()">Pretraži</button>
+            </div>
+        </header>
+        <div id="search-results"></div>
+        <main class="proza"><h1>Test</h1>
+<p>Započnite sa pisanjem...</p>
+</main>
+    </div>
+</body>
+</html>

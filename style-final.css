@@ -1,0 +1,151 @@
+/* Stilovi za izlazni (eksportovani) sajt */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.6;
+    background-color: #f6f8fa;
+    color: #24292e;
+    margin: 0;
+    padding: 0;
+}
+
+.container header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+.home-link {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.home-link:hover {
+    transform: scale(1.1);
+}
+
+.container {
+    max-width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+}
+
+.search-bar {
+    display: flex;
+    flex-grow: 1; /* Da zauzme preostali prostor */
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px; /* Zaobljeni uglovi samo sa leve strane */
+}
+
+#search-results {
+    background-color: #f6f8fa;
+    padding: 0.1rem 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+}
+
+#search-results ul {
+    list-style: disc; /* Označene liste */
+    padding-left: 20px;
+}
+
+#search-results p {
+    color: #586069;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0; /* Zaobljeni uglovi samo sa desne strane */
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav ul ul {
+    display: none;  /* Sakrij podmenije po defaultu */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    min-width: 200px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0366d6;
+    font-size: 1rem;
+}
+
+nav li:hover > ul {
+    display: block; /* Prikaži podmeni na hover */
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a.active {
+    font-weight: bold;
+    color: #24292e;
+}
+
+/* Preuzimamo .proza stilove iz glavne aplikacije da bi formatiranje teksta bilo identično */
+.proza h1, .proza h2, .proza h3, .proza h4 { color: #1d2d35; line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; border-bottom: 1px solid #e1e4e8; padding-bottom: .3em; }
+.proza h1 { font-size: 2rem; }
+.proza h2 { font-size: 1.7rem; }
+.proza h3 { font-size: 1.4rem; }
+.proza h4 { font-size: 1.2rem; }
+.proza p { margin-bottom: 1em; }
+.proza a { color: #0366d6; text-decoration: none; }
+.proza a:hover { text-decoration: underline; }
+.proza ul, .proza ol { padding-left: 2em; }
+.proza code { background-color: rgba(27,31,35,.05); padding: .2em .4em; margin: 0; font-size: 85%; border-radius: 3px; font-family: "Fira Code", "Courier New", monospace; }
+.proza blockquote { color: #6a737d; border-left: 0.25em solid #dfe2e5; padding: 0 1em; margin-left: 0; }
+.proza .custom-badge { color: #ffffff; background-color: #0366d6; padding: 0.2em 0.6em; border-radius: 5px; font-size: 90%; font-weight: bold; }
+.proza kbd.keyboard-key { background-color: #f6f8fa; color: #24292e; font-weight: bold; padding: 0.2em 0.75em; border-radius: 4px; border: 1px solid #d1d5da; font-size: 85%; font-family: "Fira Code", "Courier New", monospace; }
+.proza mark.highlighted-text { background-color: #fffbdd; color: #24292e; padding: 0.2em 0.4em; border-radius: 4px; }
+
+/* Dodajemo pravilo da slike budu responsivne */
+.proza img {
+    max-width: 100%; /* Maksimalna širina je 100% kontejnera */
+    height: auto;   /* Automatska visina, zadržava proporcije */
+}
+
+/* Dodajemo stilove za tabelu, preuzeto iz style.css */
+.proza table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+.proza th, .proza td {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+}
